@@ -6,17 +6,13 @@ var toolNames = ['pickaxe', 'shovel', 'axe', 'inventory'];
 var $toolbox = $('#toolbox');
 var $sidebar = $('#sidebar');
 
-function toolUse(x,y) {
-    tool = getTool();
-    if ($board[x][y].hasClass(tool.worksOn)) {
-
-    }
-}
-
 function toolClick(i) {
     $('.tools').css('background-color','#D59527');
     $('#'+toolNames[i]).css('background-color','#395668');
+
     var currentTool = getTool();
+
+    getTool();
 }
 
 var worksOn = ['stone','earth','tree'];
