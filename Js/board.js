@@ -9,7 +9,6 @@ $board = [];
         $board.push([]);
         var $row = $('<div></div>');
         $row.addClass('row');
-        console.log($row);
         for (var j=0; j<sy; j++) {
             var $tile = $('<div></div>');
             $tile.addClass('tile');
@@ -24,4 +23,4 @@ $board = [];
         $('#board').append($row);
     }
     $board[1][1].css('background-color','black');
-}(27,35));
+}(20,32));
