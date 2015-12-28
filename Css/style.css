@@ -1,0 +1,60 @@
+/*Test Classes*/
+.bordercheck {
+    border: 1px solid black;
+}
+
+/*ID Classes*/
+#container {
+
+}
+
+#board {
+
+}
+
+#sidebar {
+
+}
+
+    #toolbox {
+
+    }
+
+    #inventory {
+
+    }
+/*End ID*/
+
+/*Tile Classes*/
+.tile {
+    width: 20px;
+    height: 20px;
+}
+
+.sky {
+    background-color: lightblue;
+}
+
+.cloud {
+    background-color: whitesmoke;
+}
+
+.stone {
+    background-color: darkslategrey;
+}
+
+.leaves {
+    background-color: forestgreen;
+}
+
+.wood {
+    background-color: saddlebrown;
+}
+
+.grass {
+    background-color: lawngreen;
+}
+
+.earth {
+    background-color: sienna;
+}
