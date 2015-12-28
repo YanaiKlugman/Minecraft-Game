@@ -1,54 +1,49 @@
-/*Test Classes*/
-.bordercheck {
-    border: 1px solid black;
-}
-
-body {
-    padding: 0px;
-    margin: 0px;
-    line-height: 0;
-    text-align: center;
-}
-
 /*ID Classes*/
 #container {
-    position: relative;
     text-align: center;
-    width: 80%;
-    height: 80%;
+    padding-top: 2%;
+    background-color: #D59527;
+    border: 1px solid #D59527;
 }
 
 #board {
-
+    display: inline-block;
+    border: 1px solid black;
 }
 
 #sidebar {
-
+    position: relative;
+    top: -120px;
+    height: 150%;
+    display: inline-block;
 }
 
-    #toolbox {
+#toolbox {
+}
 
-    }
+#inventory {
 
-    #inventory {
-
-    }
+}
 /*End ID*/
+
 
 /*Board Classes*/
 .tile {
+    position: relative;
+    display: inline-block;
     width: 30px;
     height: 30px;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
+
 }
 
-.row {
+.row{
+    height: 30px;
     display: block;
-    margin: 0;
-    padding: 0;
     line-height: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 /*Tile Classes*/
@@ -78,4 +73,41 @@ body {
 
 .earth {
     background-color: sienna;
+}
+
+/* Tool Classes */
+#pickaxe{
+    background-image: url('../images/pickaxegoodres.png');
+    background-size: cover;
+}
+#shovel{
+    background-image: url('../images/shovelgoodres.png');
+
+    background-size: cover;
+}
+#axe{
+    background-image: url('../images/axegoodres.png');
+
+    background-size: cover;
+}
+#inventory{
+    height: 30px;
+    width: 30px;
+
+    margin-left: 33%;
+    margin-top: 20%;
+    position: relative;
+    border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 1px solid #000000;
+}
+.tools{
+    height: 100px;
+    width: 100px;
+    margin: 14%;
+    border-radius: 21px 21px 21px 21px;
+    -moz-border-radius: 21px 21px 21px 21px;
+    -webkit-border-radius: 21px 21px 21px 21px;
+    border: 0px solid #000000;
 }

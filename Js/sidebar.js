@@ -16,8 +16,7 @@ function toolUse(x,y) {
 function toolClick(i) {
     $('.tools').css('background-color','#D59527');
     $('#'+toolNames[i]).css('background-color','#395668');
-    console.log(i);
-    getTool();
+    var currentTool = getTool();
 }
 
 var worksOn = ['stone','earth','tree'];
@@ -36,7 +35,6 @@ var worksOn = ['stone','earth','tree'];
 
     }
 
-    console.log(getTool());
 }());
 
 function getTool() {
