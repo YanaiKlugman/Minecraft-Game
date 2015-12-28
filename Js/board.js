@@ -13,7 +13,6 @@ $board = [];
             } else {
                 $tile.addClass('cloud');
             }
-
             $tile.on('mouseover',tileHover(event));
 
             $tile.on('click', clickTile.bind(this, tempI, tempJ));
