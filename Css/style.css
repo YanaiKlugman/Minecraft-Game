@@ -1,53 +1,54 @@
-/*ID Classes*/
-#container {
-    text-align: center;
-    padding-top: 2%;
-    background-color: #D59527;
-}
-
-#board {
-    display: inline-block;
-}
-
-#sidebar {
-    position: relative;
-    top: -120px;
-    height: 150%;
-    display: inline-block;
-}
-
-#toolbox {
-
-    //padding-bottom: 40%;
-
-    //z-index: 2;
-    //margin-top: -40%;
-    //margin-left: 89%;
-}
-
-#inventory {
-
-}
-/*End ID*/
-
-
-/*Board Classes*/
-.tile {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 0px;
-    padding: 0px;
+/*Test Classes*/
+.bordercheck {
     border: 1px solid black;
 }
 
-.row{
-    height: 30px;
-    display: block;
-    line-height: 0;
-    margin: 0px;
+body {
     padding: 0px;
+    margin: 0px;
+    line-height: 0;
+    text-align: center;
+}
+
+/*ID Classes*/
+#container {
+    position: relative;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+}
+
+#board {
+
+}
+
+#sidebar {
+
+}
+
+    #toolbox {
+
+    }
+
+    #inventory {
+
+    }
+/*End ID*/
+
+/*Board Classes*/
+.tile {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
 }
 
 /*Tile Classes*/
@@ -77,41 +78,4 @@
 
 .earth {
     background-color: sienna;
-}
-
-/* Tool Classes */
-#pickaxe{
-    background-image: url('../images/pickaxegoodres.png');
-    background-size: cover;
-}
-#shovel{
-    background-image: url('../images/shovelgoodres.png');
-
-    background-size: cover;
-}
-#axe{
-    background-image: url('../images/axegoodres.png');
-
-    background-size: cover;
-}
-#inventory{
-    height: 30px;
-    width: 30px;
-
-    margin-left: 33%;
-    margin-top: 20%;
-    position: relative;
-    border-radius: 12px 12px 12px 12px;
-    -moz-border-radius: 12px 12px 12px 12px;
-    -webkit-border-radius: 12px 12px 12px 12px;
-    border: 1px solid #000000;
-}
-.tools{
-    height: 100px;
-    width: 100px;
-    margin: 14%;
-    border-radius: 21px 21px 21px 21px;
-    -moz-border-radius: 21px 21px 21px 21px;
-    -webkit-border-radius: 21px 21px 21px 21px;
-    border: 0px solid #000000;
 }
