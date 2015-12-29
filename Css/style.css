@@ -65,27 +65,33 @@
 }
 
 .cloud {
-    background-color: whitesmoke;
+    background-image: url(../images/tiles/cloud.png);
+    background-size: contain;
 }
 
 .stone {
-    background-color: darkslategrey;
+    background-image: url(../images/tiles/cobblestone.png);
+    background-size: contain;
 }
 
 .leaves {
-    background-color: forestgreen;
+    background-image: url(../images/tiles/leaves.png);
+    background-size: contain;
 }
 
 .wood {
-    background-color: saddlebrown;
+    background-image: url(../images/tiles/trunk.png);
+    background-size: contain;
 }
 
 .grass {
-    background-color: lawngreen;
+    background-image: url(../images/tiles/grass_side.png);
+    background-size: contain;
 }
 
 .earth {
-    background-color: sienna;
+    background-image: url(../images/tiles/dirt.png);
+    background-size: contain;
 }
 
 /* Tool Classes */
