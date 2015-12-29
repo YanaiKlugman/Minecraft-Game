@@ -2,6 +2,8 @@
  * Created by User on 12/28/2015.
  */
 var map = [];
+//                     0        1        2        3        4        5        6
+//var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves'];
 
 (function createMap(y,x) {
     // fill map with sky

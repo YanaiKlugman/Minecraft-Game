@@ -5,6 +5,7 @@ var tools = [];
 var toolNames = ['pickaxe', 'shovel', 'axe', 'inventory'];
 var $toolbox = $('#toolbox');
 var $sidebar = $('#sidebar');
+var inventory = [];
 
 function toolClick(i) {
     $('.tools').css('background-color','#D59527');
@@ -13,10 +14,15 @@ function toolClick(i) {
         data.isSelected = false;
     })
     tools[i].isSelected = true;
-    getTool();
+
 }
 
-var worksOn = ['stone','earth','tree','none'];
+
+var toolWorksOn = [['stone'],
+    ['grass','earth'],
+    ['wood','leaves'],
+    []];
+
 (function createSideBar(){
     for (var i = 0; i < toolNames.length; i++) {
         var tool = {};
@@ -27,8 +33,7 @@ var worksOn = ['stone','earth','tree','none'];
         tool.selector = $('#toolbox').append($div);
         tool.isSelected = i==0 ? false : true;
         tool.name = toolNames[i];
-        tool.worksOn = worksOn[i];
-        tool.name[i] = worksOn[i];
+        tool.worksOn = toolWorksOn[i];
         tools[i] = tool;
 
     }
