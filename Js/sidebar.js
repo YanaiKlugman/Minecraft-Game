@@ -9,9 +9,10 @@ var $sidebar = $('#sidebar');
 function toolClick(i) {
     $('.tools').css('background-color','#D59527');
     $('#'+toolNames[i]).css('background-color','#395668');
-
-    var currentTool = getTool();
-
+    tools.forEach(function (data, index) {
+        data.isSelected = false;
+    })
+    tools[i].isSelected = true;
     getTool();
 }
 
@@ -24,7 +25,7 @@ var worksOn = ['stone','earth','tree'];
         $div.attr('id', toolNames[i]);
         $div.bind('mousedown', toolClick.bind(this,i));
         tool.selector = $('#toolbox').append($div);
-        tool.isSelected = i ? false : true;
+        tool.isSelected = i==0 ? false : true;
         tool.name = toolNames[i];
         tool.worksOn = worksOn[i];
         tools[i] = tool;
