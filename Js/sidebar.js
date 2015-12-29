@@ -34,7 +34,7 @@ var toolWorksOn = [['stone'],
     ['wood','leaves'],
     []];
 
-(function createSideBar(){
+function createSideBar(){
     for (var i = 0; i < toolNames.length; i++) {
         var tool = {};
         var $div = $('<div></div>');
@@ -49,7 +49,7 @@ var toolWorksOn = [['stone'],
 
     }
 
-}());
+}
 
 function getTool() {
     for (var x=0; x<tools.length; x++) {
