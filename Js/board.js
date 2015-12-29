@@ -1,5 +1,5 @@
 $board = [];
-var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves'];
+var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
 
 (function createBoard(sx, sy) {
     for (var i=0; i<sx; i++) {
@@ -11,7 +11,7 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves']
             $tile.addClass('tile');
             $tile.addClass(tileClasses[map[i][j]]);
             $tile.on('click', clickTile.bind(this, i, j));
-           /* $tile.on('mouseover', tileHover.bind(event, i, j));*/
+            $tile.on('mouseover', tileHover.bind(event, i, j));
             $row.append($tile);
             $board[i].push($tile);
         }
@@ -23,33 +23,70 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves']
 
 /*Tile Events*/
 function tileHover(x, y, e) {
-    console.log('e' + e + ' x' + x + ' y' + y);
-    if (e) {
+    /*console.log('e' + e + ' x' + x + ' y' + y);*/
+ /*   if (e) {
         if (e.buttons != 1)
             $board[x][y].css('border', '1px solid white');
         else
             $board[x][y].css('border', '1px solid red');
     } else {
         console.log('no e :(');
+    }*/
+    if (getTool().worksOn === 'stone'){
+        $board[x][y].addClass('interact');
     }
+    else{
+        $board[x][y].addClass('no-interact');
+    }
+
+    if (getTool().worksOn === 'earth'){
+        $board[x][y].addClass('interact');
+    }
+    else{
+        $board[x][y].addClass('no-interact');
+    }
+
+    if (getTool().worksOn === 'tree'){
+        $board[x][y].addClass('interact');
+    }
+    else{
+        $board[x][y].addClass('no-interact');
+    }
+
+
 }
 
 function clickTile(x, y) {
     var tool = getTool();
     if (tool.name == 'inventory') {
-        $board[x][y].removeClass();
-        $board[x][y].addClass('tile');
-        $board[x][y].addClass('wood');
-
-    } else {
-        /*if ($board[x][y].hasClass(tool.worksOn)) {
-            $board[x][y].remove(tools.worksOn);
-            $board[x][y].addClass('sky');
-        }*/
-        if (!$board[x][y].hasClass('sky')) {
+        if (inventory.length) {
             $board[x][y].removeClass();
             $board[x][y].addClass('tile');
+            $board[x][y].addClass(inventory[inventory.length - 1]);
+            inventory.pop();
+            $('#inventory').removeClass();
+            $('#inventory').addClass('tools');
+            if (inventory.length) {
+                $('#inventory').addClass(inventory[inventory.length - 1]);
+            }
+        }
+    } else {
+        var shouldWork = false;
+        var classThatWorks;
+        getTool().worksOn.forEach(function (data) {
+            if ($board[x][y].hasClass(data)) {
+                shouldWork = true;
+                classThatWorks = data;
+            }
+        })
+        if (shouldWork){
+            $board[x][y].removeClass(classThatWorks);
             $board[x][y].addClass('sky');
+            inventory.push(classThatWorks);
+            $('#inventory').removeClass();
+            $('#inventory').addClass('tools');
+            $('#inventory').addClass(classThatWorks);
+
         }
     }
 }

@@ -42,6 +42,15 @@
     box-sizing: border-box;
 }
 
+.tile.interact:hover{
+    border: 1px solid green;
+    box-sizing: border-box;
+}
+.tile.no-interact:hover{
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
 .row{
     height: 30px;
     display: block;
@@ -97,7 +106,7 @@
 #inventory{
     height: 30px;
     width: 30px;
-
+    background-color: transparent; !important;
     margin-left: 33%;
     margin-top: 20%;
     position: relative;
