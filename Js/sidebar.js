@@ -14,7 +14,18 @@ function toolClick(i) {
         data.isSelected = false;
     })
     tools[i].isSelected = true;
-
+    if (getTool().name === 'pickaxe'){
+        $('#board').removeClass();
+        $('#board').addClass('cursor-pickaxe');
+    }
+    if (getTool().name === 'axe'){
+        $('#board').removeClass();
+        $('#board').addClass('cursor-axe');
+    }
+    if (getTool().name === 'shovel'){
+        $('#board').removeClass();
+        $('#board').addClass('cursor-shovel');
+    }
 }
 
 

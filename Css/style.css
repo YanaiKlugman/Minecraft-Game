@@ -10,6 +10,7 @@
 #board {
     display: inline-block;
     border: 1px solid black;
+
 }
 
 #sidebar {
@@ -26,6 +27,17 @@
 
 }
 /*End ID*/
+
+/*Cursors*/
+.cursor-shovel{
+    cursor: url('../images/cursors/cursor.cur'), auto;
+}
+.cursor-pickaxe{
+    cursor: url('../images/cursors/pickaxe.cur'), auto;
+}
+.cursor-axe{
+    cursor: url('../images/cursors/axe.cur'), auto;
+}
 
 
 /*Board Classes*/
