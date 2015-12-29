@@ -1,7 +1,7 @@
 $board = [];
-var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
+tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
 
-(function createBoard(sx, sy) {
+function createBoard(sx, sy) {
     for (var i=0; i<sx; i++) {
         $board.push([]);
         var $row = $('<div></div>');
@@ -9,7 +9,7 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
         for (var j=0; j<sy; j++) {
             var $tile = $('<div></div>');
             $tile.addClass('tile');
-            $tile.addClass(tileClasses[map[i][j]]);
+            //$tile.addClass(tileClasses[map[i][j]]);
             $tile.on('click', clickTile.bind(this, i, j));
             $tile.on('mouseover', tileHover.bind(event, i, j));
             $row.append($tile);
@@ -19,7 +19,7 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
     }
 
 
-}(20,32));
+}
 
 /*Tile Events*/
 function tileHover(x, y, e) {
@@ -80,9 +80,3 @@ function clickTile(x, y) {
         }
     }
 }
-
-/*WorkSpace - Yanai*/
-function checkTile(x, y) {
-    var tile = $board[x][y];
-}
-
