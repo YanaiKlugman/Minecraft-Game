@@ -42,6 +42,15 @@
     box-sizing: border-box;
 }
 
+.tile.interact:hover{
+    border: 1px solid green;
+    box-sizing: border-box;
+}
+.tile.no-interact:hover{
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
 .row{
     height: 30px;
     display: block;

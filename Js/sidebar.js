@@ -16,7 +16,7 @@ function toolClick(i) {
     getTool();
 }
 
-var worksOn = ['stone','earth','tree'];
+var worksOn = ['stone','earth','tree','none'];
 (function createSideBar(){
     for (var i = 0; i < toolNames.length; i++) {
         var tool = {};
@@ -28,6 +28,7 @@ var worksOn = ['stone','earth','tree'];
         tool.isSelected = i==0 ? false : true;
         tool.name = toolNames[i];
         tool.worksOn = worksOn[i];
+        tool.name[i] = worksOn[i];
         tools[i] = tool;
 
     }

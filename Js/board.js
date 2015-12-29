@@ -11,7 +11,7 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves']
             $tile.addClass('tile');
             $tile.addClass(tileClasses[map[i][j]]);
             $tile.on('click', clickTile.bind(this, i, j));
-           /* $tile.on('mouseover', tileHover.bind(event, i, j));*/
+            $tile.on('mouseover', tileHover.bind(event, i, j));
             $row.append($tile);
             $board[i].push($tile);
         }
@@ -24,14 +24,36 @@ var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves']
 /*Tile Events*/
 function tileHover(x, y, e) {
     console.log('e' + e + ' x' + x + ' y' + y);
-    if (e) {
+ /*   if (e) {
         if (e.buttons != 1)
             $board[x][y].css('border', '1px solid white');
         else
             $board[x][y].css('border', '1px solid red');
     } else {
         console.log('no e :(');
+    }*/
+    if (getTool().worksOn = 'stone'){
+        $board[x][y].addClass('tile interact');
     }
+    else{
+        $board[x][y].addClass('tile no-interact');
+    }
+
+    if (getTool().worksOn = 'earth'){
+        $board[x][y].addClass('tile interact');
+    }
+    else{
+        $board[x][y].addClass('tile no-interact');
+    }
+
+    if (getTool().worksOn = 'tree'){
+        $board[x][y].addClass('tile interact');
+    }
+    else{
+        $board[x][y].addClass('tile no-interact');
+    }
+
+
 }
 
 function clickTile(x, y) {
