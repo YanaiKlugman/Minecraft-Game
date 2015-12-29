@@ -7,8 +7,7 @@ function welcome(){
     $startButton.attr('value', "Ready to Play MineCraft?");
     $startButton.addClass('startButton');
     $startButton.on('click', function () {
-        $('.inner-container').fadeIn(2000);
-        /*$('#board').fade(1000);*/
+        $('.inner-container').fadeIn(1000);
         gameInit();
         $('.inner-container').css({'background':'none', 'padding':'0px'});
         $startButton.hide();
