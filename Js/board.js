@@ -1,4 +1,5 @@
 $board = [];
+var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'trunk', 'leaves'];
 
 (function createBoard(sx, sy) {
     for (var i=0; i<sx; i++) {
@@ -8,15 +9,9 @@ $board = [];
         for (var j=0; j<sy; j++) {
             var $tile = $('<div></div>');
             $tile.addClass('tile');
-            if (j%2) {
-                $tile.addClass('sky');
-            } else {
-                $tile.addClass('cloud');
-            }
-            $tile.on('mouseover',tileHover(event));
-
-            $tile.on('click', clickTile.bind(this, tempI, tempJ));
-
+            $tile.addClass(tileClasses[map[i][j]]);
+            $tile.on('click', clickTile.bind(this, i, j));
+           /* $tile.on('mouseover', tileHover.bind(event, i, j));*/
             $row.append($tile);
             $board[i].push($tile);
         }
@@ -27,25 +22,40 @@ $board = [];
 }(20,32));
 
 /*Tile Events*/
-function tileHover(event) {
-    console.log(event);
-    /*    if (!event.buttons) {*/
-    $(this).css('background-color', 'red');
-
-    function clickTile(x, y) {
-        var tool = getTool();
-        if (tool.name === 'inventory') {
-
-        } else {
-            if ($board[x][y].hasClass(tool.worksOn)) {
-                $board[x][y].remove(tools.worksOn);
-                $board[x][y].addClass('sky');
-            }
-        }
-    }
-
-    /*WorkSpace - Yanai*/
-    function checkTile(x, y) {
-        var tile = $board[x][y];
+function tileHover(x, y, e) {
+    console.log('e' + e + ' x' + x + ' y' + y);
+    if (e) {
+        if (e.buttons != 1)
+            $board[x][y].css('border', '1px solid white');
+        else
+            $board[x][y].css('border', '1px solid red');
+    } else {
+        console.log('no e :(');
     }
 }
+
+function clickTile(x, y) {
+    var tool = getTool();
+    if (tool.name == 'inventory') {
+        $board[x][y].removeClass();
+        $board[x][y].addClass('tile');
+        $board[x][y].addClass('wood');
+
+    } else {
+        /*if ($board[x][y].hasClass(tool.worksOn)) {
+            $board[x][y].remove(tools.worksOn);
+            $board[x][y].addClass('sky');
+        }*/
+        if (!$board[x][y].hasClass('sky')) {
+            $board[x][y].removeClass();
+            $board[x][y].addClass('tile');
+            $board[x][y].addClass('sky');
+        }
+    }
+}
+
+/*WorkSpace - Yanai*/
+function checkTile(x, y) {
+    var tile = $board[x][y];
+}
+

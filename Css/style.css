@@ -36,7 +36,10 @@
     height: 30px;
     margin: 0px;
     padding: 0px;
-
+}
+.tile:hover{
+    border: 1px solid white;
+    box-sizing: border-box;
 }
 
 .row{
