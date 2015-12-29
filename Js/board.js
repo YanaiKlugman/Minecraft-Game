@@ -32,27 +32,17 @@ function tileHover(x, y, e) {
     } else {
         console.log('no e :(');
     }*/
-    if (getTool().worksOn === 'stone'){
+    var isGood;
+    getTool().worksOn.forEach(function (data) {
+        if ($board[x][y].hasClass(data)) {
+            isGood = true;
+        }
+    });
+    if (isGood) {
         $board[x][y].addClass('interact');
+    } else {
+        $board[x][y].removeClass('interact');
     }
-    else{
-        $board[x][y].addClass('no-interact');
-    }
-
-    if (getTool().worksOn === 'earth'){
-        $board[x][y].addClass('interact');
-    }
-    else{
-        $board[x][y].addClass('no-interact');
-    }
-
-    if (getTool().worksOn === 'tree'){
-        $board[x][y].addClass('interact');
-    }
-    else{
-        $board[x][y].addClass('no-interact');
-    }
-
 
 }
 
