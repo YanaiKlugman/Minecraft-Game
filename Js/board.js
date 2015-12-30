@@ -11,6 +11,7 @@ function createBoard(sx, sy) {
             $tile.addClass('tile');
             $tile.on('click', clickTile.bind(event, i, j));
             $tile.on('mouseover', tileHover.bind(event, i, j));
+            $tile.on('mousedown', function() {event.preventDefault()});
             $row.append($tile);
             $board[i].push($tile);
         }
@@ -20,13 +21,6 @@ function createBoard(sx, sy) {
 
 // called when mouse hovers over a tile
 function tileHover(x, y, e) {
-    // trigger click if mouse button is down
-    if (e) {
-        if (e.buttons == 1)
-        {
-            clickTile(x, y);
-        }
-    }
 
     var isGood;
     getTool().worksOn.forEach(function (data) {
