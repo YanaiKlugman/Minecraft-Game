@@ -14,7 +14,7 @@
     padding-bottom: 20%;
     padding-top: 20%;
     text-align: center;
-    background-image:url('../images/background.png');
+    background-image:url('../images/minecraftlogo.png');
     background-size: cover;
 
 }
@@ -43,11 +43,23 @@
 
 /*Welcome Page*/
 .startButton{
-
+    position: relative;
+    color: #D59527;
     height: 50px;
     width: 250px;
-}
 
+    font-family: Arial;
+    cursor: pointer;
+}
+.inputName{
+    color: #D59527;
+    height: 50px;
+    width: 250px;
+    position: relative;
+
+    font-family: Arial;
+    cursor: pointer;
+}
 /*
 #welcome{
     background-image: url('../images/background.png');
@@ -169,12 +181,30 @@
     -moz-border-radius: 21px 21px 21px 21px;
     -webkit-border-radius: 21px 21px 21px 21px;
     border: 0px solid #000000;
+    cursor: pointer;
 }
 
-.saveload {
+.bottomButton {
     margin: 10px;
     position: relative;
     display: inline-block;
     width: 150px;
-    height: 60px;
+    height: 40px;
+    border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    background-color: #395668;
+    padding-top: 1%;
+    padding-bottom: -0.5%;
+    color: #D59527;
+    font-family: Arial;
+
+}
+.bottomButton:hover{
+    width: 160px;
+    height: 50px;
+    cursor: pointer;
+}
+#bottom{
+    margin-left: 20%;
 }

@@ -46,9 +46,7 @@ function createSideBar(){
         tool.name = toolNames[i];
         tool.worksOn = toolWorksOn[i];
         tools[i] = tool;
-
     }
-
 }
 
 function getTool() {
@@ -58,3 +56,4 @@ function getTool() {
         }
     }
 }
+

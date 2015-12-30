@@ -5,9 +5,13 @@
 welcome();
 
 // called when start button on welcome screen is pressed
+
 function gameInit() {
     createBoard(20, 32); // create a x b tiles
     createMap(); // generate a map, use it to give tiles different classes for display/functionality
     createSideBar(); // generate tools/inventory
     toolClick(0); // select pickaxe
+    createLoadButton();
+    createSaveButton();
+    createNewGameButton();
 }

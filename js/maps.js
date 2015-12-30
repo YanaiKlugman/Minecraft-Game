@@ -1,11 +1,8 @@
-/**
- * Created by User on 12/28/2015.
- */
 //                   0       1        2        3        4       5        6
 var tileClasses = ['sky', 'cloud', 'grass', 'earth', 'stone', 'wood', 'leaves'];
 var map;
 
-// save contents of tiles for loading in future
+// save contents of tiles into memory
 function saveMap() {
     map = [];
     for (var ctr=0; ctr<$board.length; ctr++) {
@@ -16,20 +13,49 @@ function saveMap() {
     }
 }
 
-// load contents of saved map
+// load from map saved in memory
 function loadMap() {
     if (map) {
         map.forEach(function(data, index) {
-           data.forEach(function (data2, index2) {
-               $board[index][index2].attr('class', map[index][index2]);
-           });
+            data.forEach(function (data2, index2) {
+                $board[index][index2].attr('class', map[index][index2]);
+            });
         });
     }
 }
 
+// save board into localstorage
+function storeBoard() {
+    localStorage.clear();
+    for (var ctr=0; ctr<$board.length; ctr++) {
+        for (var ctr2=0; ctr2<$board[ctr].length; ctr2++) {
+            localStorage.setItem((ctr*$board[0].length+ctr2).toString(), $board[ctr][ctr2].attr('class'));
+        }
+    }
+}
+
+// load board from localstorage
+function loadStoredBoard() {
+    $board.forEach(function (data, index) {
+        data.forEach(function (data2, index2) {
+            $board[index][index2].attr('class', localStorage.getItem(($board[0].length * index + index2).toString()));
+        });
+    });
+}
+//load new game
+function newGame(){
+    createMap();
+}
+
 function changeTile(x, y, type) {
+    var holder = '';
+    if (type != 0 && type != 1) {
+        if ($board[y][x].hasClass('sky')) holder = 'sky';
+        if ($board[y][x].hasClass('cloud')) holder = 'cloud';
+    }
     $board[y][x].removeClass();
     $board[y][x].addClass('tile');
+    if (holder) $board[y][x].addClass(holder);
     $board[y][x].addClass(tileClasses[type]);
 }
 
