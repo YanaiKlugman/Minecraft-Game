@@ -21,6 +21,8 @@
 #board {
     display: inline-block;
     border: 1px solid black;
+    background-image: url('../images/skyBackground.png');
+    background-size: cover;
 }
 
 #sidebar {
@@ -84,7 +86,7 @@
 
 
 .tile.interact:hover {
-    /*background-image: linear-gradient(rgba(255, 255, 255, 0.2), url('C:\dev\Web\jQuery\Minecraft-Game\images\Tiles'));*/
+    /*background-image: linear-gradient(rgba(255, 255, 255, 0.2), url('C:\dev\Web\jQuery\Minecraft-Game\images\tiles'));*/
     border: 4px solid limegreen;
 
 }
@@ -99,7 +101,7 @@
 
 /*Tile Classes*/
 .sky {
-    background-color: lightblue;
+    background-color: transparent;
 }
 
 .cloud {

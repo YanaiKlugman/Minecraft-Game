@@ -20,7 +20,7 @@ function createBoard(sx, sy) {
 }
 
 // called when mouse hovers over a tile
-function tileHover(x, y, e) {
+function tileHover(x, y) {
 
     var isGood;
     getTool().worksOn.forEach(function (data) {
@@ -38,6 +38,7 @@ function tileHover(x, y, e) {
 
 // called when a tile is clicked or mouseover when mouse button is down
 function clickTile(x, y) {
+    var $inventory = $('#inventory');
     var tool = getTool();
     if (tool.name == 'inventory') {
         if (inventory.length) {
@@ -45,8 +46,8 @@ function clickTile(x, y) {
             $board[x][y].addClass('tile');
             $board[x][y].addClass(inventory[inventory.length - 1]);
             inventory.pop();
-            $('#inventory').removeClass();
-            $('#inventory').addClass('tools');
+            $inventory.removeClass();
+            $inventory.addClass('tools');
             if (inventory.length) {
                 $('#inventory').addClass(inventory[inventory.length - 1]);
             }
@@ -59,15 +60,14 @@ function clickTile(x, y) {
                 shouldWork = true;
                 classThatWorks = data;
             }
-        })
+        });
         if (shouldWork){
             $board[x][y].removeClass(classThatWorks);
             $board[x][y].addClass('sky');
             inventory.push(classThatWorks);
-            $('#inventory').removeClass();
-            $('#inventory').addClass('tools');
-            $('#inventory').addClass(classThatWorks);
-
+            $inventory.removeClass();
+            $inventory.addClass('tools');
+            $inventory.addClass(classThatWorks);
         }
     }
 }

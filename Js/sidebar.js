@@ -4,27 +4,27 @@
 var tools = [];
 var toolNames = ['pickaxe', 'shovel', 'axe', 'inventory'];
 var $toolbox = $('#toolbox');
-var $sidebar = $('#sidebar');
 var inventory = [];
 
 function toolClick(i) {
+    var $board = $('#board');
     $('.tools').css('background-color','#D59527');
     $('#'+toolNames[i]).css('background-color','#395668');
-    tools.forEach(function (data, index) {
+    tools.forEach(function (data) {
         data.isSelected = false;
-    })
+    });
     tools[i].isSelected = true;
     if (getTool().name === 'pickaxe'){
-        $('#board').removeClass();
-        $('#board').addClass('cursor-pickaxe');
+        $board.removeClass();
+        $board.addClass('cursor-pickaxe');
     }
     if (getTool().name === 'axe'){
-        $('#board').removeClass();
-        $('#board').addClass('cursor-axe');
+        $board.removeClass();
+        $board.addClass('cursor-axe');
     }
     if (getTool().name === 'shovel'){
-        $('#board').removeClass();
-        $('#board').addClass('cursor-shovel');
+        $board.removeClass();
+        $board.addClass('cursor-shovel');
     }
 }
 
@@ -41,8 +41,8 @@ function createSideBar(){
         $div.addClass('tools');
         $div.attr('id', toolNames[i]);
         $div.bind('mousedown', toolClick.bind(this,i));
-        tool.selector = $('#toolbox').append($div);
-        tool.isSelected = i==0 ? false : true;
+        tool.selector = $toolbox.append($div);
+        tool.isSelected = i!=0;
         tool.name = toolNames[i];
         tool.worksOn = toolWorksOn[i];
         tools[i] = tool;
