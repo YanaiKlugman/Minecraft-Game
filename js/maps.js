@@ -27,6 +27,11 @@ function loadMap() {
     }
 }
 
+//load new game
+function newGame(){
+    createMap();
+}
+
 function changeTile(x, y, type) {
     $board[y][x].removeClass();
     $board[y][x].addClass('tile');
