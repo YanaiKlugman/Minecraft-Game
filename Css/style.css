@@ -1,16 +1,26 @@
 /*ID Classes*/
-#container {
+.container {
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     background-color: #D59527;
     border: 1px solid #D59527;
 }
+.inner-container{
+    position: relative;
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-bottom: 20%;
+    padding-top: 20%;
+    text-align: center;
+    background-image:url('../images/background.png');
+    background-size: cover;
 
+}
 #board {
     display: inline-block;
     border: 1px solid black;
-
 }
 
 #sidebar {
@@ -30,10 +40,21 @@
 /*End ID*/
 
 /*Welcome Page*/
-.welcome{
-    background-color: saddlebrown;
+.startButton{
+
+    height: 50px;
+    width: 250px;
 }
 
+/*
+#welcome{
+    background-image: url('../images/background.png');
+    background-size: cover;
+    border: 1px solid black;
+    position: static;
+    z-index: 100;
+}
+*/
 
 /*Cursors*/
 .cursor-shovel{
@@ -146,4 +167,12 @@
     -moz-border-radius: 21px 21px 21px 21px;
     -webkit-border-radius: 21px 21px 21px 21px;
     border: 0px solid #000000;
+}
+
+.saveload {
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 60px;
 }

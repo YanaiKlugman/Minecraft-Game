@@ -9,29 +9,25 @@ function createBoard(sx, sy) {
         for (var j=0; j<sy; j++) {
             var $tile = $('<div></div>');
             $tile.addClass('tile');
-            //$tile.addClass(tileClasses[map[i][j]]);
-            $tile.on('click', clickTile.bind(this, i, j));
+            $tile.on('click', clickTile.bind(event, i, j));
             $tile.on('mouseover', tileHover.bind(event, i, j));
             $row.append($tile);
             $board[i].push($tile);
         }
         $('#board').append($row);
     }
-
-
 }
 
-/*Tile Events*/
+// called when mouse hovers over a tile
 function tileHover(x, y, e) {
-    /*console.log('e' + e + ' x' + x + ' y' + y);*/
- /*   if (e) {
-        if (e.buttons != 1)
-            $board[x][y].css('border', '1px solid white');
-        else
-            $board[x][y].css('border', '1px solid red');
-    } else {
-        console.log('no e :(');
-    }*/
+    // trigger click if mouse button is down
+    if (e) {
+        if (e.buttons == 1)
+        {
+            clickTile(x, y);
+        }
+    }
+
     var isGood;
     getTool().worksOn.forEach(function (data) {
         if ($board[x][y].hasClass(data)) {
@@ -46,6 +42,7 @@ function tileHover(x, y, e) {
 
 }
 
+// called when a tile is clicked or mouseover when mouse button is down
 function clickTile(x, y) {
     var tool = getTool();
     if (tool.name == 'inventory') {
