@@ -38,9 +38,13 @@ function storeBoard() {
 function loadStoredBoard() {
     $board.forEach(function (data, index) {
         data.forEach(function (data2, index2) {
-            $board[index][index2].attr('class', localStorage.getItem(($board[0].length*index + index2).toString()));
+            $board[index][index2].attr('class', localStorage.getItem(($board[0].length * index + index2).toString()));
         });
     });
+}
+//load new game
+function newGame(){
+    createMap();
 }
 
 function changeTile(x, y, type) {
