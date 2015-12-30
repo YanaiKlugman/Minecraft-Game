@@ -9,12 +9,12 @@ function welcome(){
     var $startButton = $('<div></div>');
     $startButton.text("Play MineCraft");
     $startButton.addClass('startButton');
-    $startButton.fadeIn(3000);
+    $startButton.fadeIn(2000);
 
     var $continueButton = $('<div></div>');
     $continueButton.text("Continue Saved Game");
     $continueButton.addClass('continueButton');
-    $continueButton.fadeIn(3000);
+    $continueButton.fadeIn(2000);
 
     $continueButton.on('click', function(){
         loadOnStart = true;
@@ -24,17 +24,19 @@ function welcome(){
 /*    var timer;*/
     $startButton.on('click', function () {
         $('#board').show();
-        $('#sidebar').fadeIn(2000);
+        $('#sidebar').show();
         gameInit();
         $('.container').addClass('main-game-container');/*css({'background-image': url('../images/back'), 'padding':'0px'});*/
         $('.inner-container').css({'padding-top':'0.4%', 'padding-bottom':'0.4%'});
         $startButton.hide();
         $continueButton.hide();
         $('.bottomButton').show();
-        clearTimeout(timer);
+    /*    clearTimeout(timer);*/
     });
     $('.inner-container').append($startButton);
-    $('.inner-container').append($continueButton);
+    if (localStorage.length) {
+        $('.inner-container').append($continueButton);
+    }
    /* timer = setTimeout(function () {
         $startButton.click();
     }, 1000);*/

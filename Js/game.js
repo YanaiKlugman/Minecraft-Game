@@ -8,11 +8,7 @@ welcome();
 
 function gameInit(load) {
     createBoard(20, 32); // create a x b tiles
-    /*if (load) {
-        loadStoredBoard();
-    } else {
-        createMap(); // generate a map, use it to give tiles different classes for display/functionality
-    }*/
+   // generate a map, use it to give tiles different classes for display/functionality
     newGame();
     createSideBar(); // generate tools/inventory
     toolClick(0); // select pickaxe
@@ -20,5 +16,4 @@ function gameInit(load) {
     createSaveButton();
     createNewGameButton();
     exitGame();
-
 }
