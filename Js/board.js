@@ -63,6 +63,7 @@ function clickTile(x, y) {
         if (shouldWork){
             $board[x][y].removeClass(classThatWorks);
             $board[x][y].addClass('sky');
+            $board[x][y].addClass('falling-leaves');
             inventory.push(classThatWorks);
             $('#inventory').removeClass();
             $('#inventory').addClass('tools');

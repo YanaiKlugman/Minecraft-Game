@@ -4,6 +4,7 @@ var map;
 var clouds;
 var trees;
 var rocks;
+var loadOnStart = false;
 
 // save contents of tiles into memory
 function saveMap() {
@@ -47,7 +48,12 @@ function loadStoredBoard() {
 }
 //load new game
 function newGame(){
-    createMap();
+    if (loadOnStart) {
+        loadStoredBoard();
+        loadOnStart = false;
+    } else {
+        createMap();
+    }
 }
 
 function changeTile(x, y, type) {

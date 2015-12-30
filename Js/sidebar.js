@@ -8,7 +8,7 @@ var $sidebar = $('#sidebar');
 var inventory = [];
 
 function toolClick(i) {
-    $('.tools').css('background-color','#D59527');
+    $('.tools').css('background-color','transparent');
     $('#'+toolNames[i]).css('background-color','#395668');
     tools.forEach(function (data, index) {
         data.isSelected = false;
@@ -27,7 +27,6 @@ function toolClick(i) {
         $('#board').addClass('cursor-shovel');
     }
 }
-
 
 var toolWorksOn = [['stone'],
     ['grass','earth'],

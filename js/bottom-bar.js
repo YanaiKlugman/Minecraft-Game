@@ -5,14 +5,14 @@ function createSaveButton(){
     var $save = $('<div></div>');
     $save.addClass('bottomButton');
     $save.text('SAVE');
-    $save.on('click', function() {saveMap()});
+    $save.on('click', function() {storeBoard()});
     $('#bottom').append($save);
 }
 function createLoadButton(){
     var $load = $('<div></div>');
     $load.text('LOAD');
     $load.addClass('bottomButton');
-    $load.on('click', function() {loadMap()});
+    $load.on('click', function() {loadStoredBoard()});
     $('#bottom').append($load);
 }
 function createNewGameButton(){
@@ -21,6 +21,11 @@ function createNewGameButton(){
     $newGame.addClass('bottomButton');
     $newGame.on('click', function(){newGame()});
     $('#bottom').append($newGame);
-
 }
-
+function exitGame(){
+    var $exitGame = $('<div></div>');
+    $exitGame.text('EXIT');
+    $exitGame.addClass('bottomButton');
+    $exitGame.on('click', welcome);
+    $('#bottom').append($exitGame);
+}
