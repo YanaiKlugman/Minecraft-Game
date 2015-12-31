@@ -4,15 +4,22 @@
 var tools = [];
 var inventory = [];
 var toolNames = ['hand', 'pickaxe', 'shovel', 'axe', 'inventory'];
-var $toolbox = $('#toolbox');
-var $sidebar = $('#sidebar');
+var inventoryItems = ['stone', 'wood', 'leaves', 'grass', 'earth'];
+var inventoryAmounts = [0, 0, 0, 0, 0];
+
 
 function toolClick(i) {
     $('.tools').css('background-color','transparent');
-    $('#'+toolNames[i]).css('background-color','#395668');
+    $('.invItem').css('border','1px solid black');
+    if (i<4) {
+        $('#' + toolNames[i]).css('background-color', '#395668');
+    } else {
+        console.log(i);
+        $('.invItem')[i-4].style.border = '1px solid gold';
+    }
     tools.forEach(function (data, index) {
         data.isSelected = false;
-    })
+    });
     tools[i].isSelected = true;
     if (getTool().name === 'pickaxe'){
         $('#board').removeClass();
@@ -37,27 +44,46 @@ function toolClick(i) {
 }
 
 var toolWorksOn = [
-    ['stone','leaves','wood','cloud'],
+    ['stone', 'leaves', 'wood', 'cloud'],
     ['stone'],
-    ['grass','earth'],
-    ['wood','leaves'],
-    []];
+    ['grass', 'earth'],
+    ['wood', 'leaves'],
+    []
+];
 
 function createSideBar(){
-    for (var i = 0; i < toolNames.length; i++) {
+    for (var i = 0; i < toolNames.length-1; i++) {
         var tool = {};
         var $div = $('<div></div>');
         $div.addClass('tools');
         $div.attr('id', toolNames[i]);
         $div.bind('mousedown', toolClick.bind(this,i));
         tool.selector = $('#toolbox').append($div);
-        tool.isSelected = i==0 ? false : true;
+        tool.isSelected = i!=0;
         tool.name = toolNames[i];
         tool.worksOn = toolWorksOn[i];
         tools[i] = tool;
     }
-    //$('#hand').text('hand');
+    for (var i=0; i<inventoryItems.length; i++) {
+        $div = $('<div></div>');
+        var tool = {};
+        $div.addClass('tools ' + inventoryItems[i]);
+        $div.addClass('invItem');
+        $div.bind('mousedown', toolClick.bind(this, i+4));
+        tool.itemSelector = $('#toolbox').append($div);
+        tool.name = 'inventory';
+        tool.tile = inventoryItems[i];
+        tool.worksOn = toolWorksOn[4];
+        tool.id = i+4;
+        tools.push(tool);
+    }
+    //$('#hand').text('hand');*/
 }
+
+function inventoryClick() {
+
+}
+
 
 function getTool() {
     for (var x=0; x<tools.length; x++) {
