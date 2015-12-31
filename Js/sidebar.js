@@ -2,10 +2,10 @@
  * Created by User on 12/28/2015.
  */
 var tools = [];
-var toolNames = ['pickaxe', 'shovel', 'axe', 'inventory'];
+var inventory = [];
+var toolNames = ['hand', 'pickaxe', 'shovel', 'axe', 'inventory'];
 var $toolbox = $('#toolbox');
 var $sidebar = $('#sidebar');
-var inventory = [];
 
 function toolClick(i) {
     $('.tools').css('background-color','transparent');
@@ -26,9 +26,19 @@ function toolClick(i) {
         $('#board').removeClass();
         $('#board').addClass('cursor-shovel');
     }
+    if (getTool().name === 'inventory') {
+        $('#board').removeClass();
+        $('#board').addClass('cursor-inventory');
+    }
+    if (getTool().name === 'inventory') {
+        $('#board').removeClass();
+        $('#board').addClass('cursor-hand');
+    }
 }
 
-var toolWorksOn = [['stone'],
+var toolWorksOn = [
+    ['stone','leaves','wood','cloud'],
+    ['stone'],
     ['grass','earth'],
     ['wood','leaves'],
     []];
@@ -46,6 +56,7 @@ function createSideBar(){
         tool.worksOn = toolWorksOn[i];
         tools[i] = tool;
     }
+    //$('#hand').text('hand');
 }
 
 function getTool() {

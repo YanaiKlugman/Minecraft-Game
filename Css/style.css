@@ -91,6 +91,13 @@
 .cursor-axe{
     cursor: url('../images/cursors/axe.cur'), auto;
 }
+.cursor-inventory {
+    cursor: pointer;
+}
+
+.cursor-hand {
+    cursor: pointer;
+}
 
 /*Board Classes*/
 .tile {

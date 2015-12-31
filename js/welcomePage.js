@@ -1,7 +1,7 @@
 /**
  * Created by User on 12/29/2015.
  */
-function welcome(){
+function welcome() {
     $('.bottomButton').hide();
     $('#board').hide();
 
@@ -16,29 +16,30 @@ function welcome(){
     $continueButton.addClass('continueButton');
     $continueButton.fadeIn(2000);
 
-    $continueButton.on('click', function(){
+    $continueButton.on('click', function () {
         loadOnStart = true;
         $startButton.click();
     });
 
-/*    var timer;*/
+    /*    var timer;*/
     $startButton.on('click', function () {
         $('#board').show();
         $('#sidebar').show();
         gameInit();
-        $('.container').addClass('main-game-container');/*css({'background-image': url('../images/back'), 'padding':'0px'});*/
-        $('.inner-container').css({'padding-top':'0.4%', 'padding-bottom':'0.4%'});
+        $('.container').addClass('main-game-container');
+        /*css({'background-image': url('../images/back'), 'padding':'0px'});*/
+        $('.inner-container').css({'padding-top': '0.4%', 'padding-bottom': '0.4%'});
         $startButton.hide();
         $continueButton.hide();
         $('.bottomButton').show();
-    /*    clearTimeout(timer);*/
+        /*    clearTimeout(timer);*/
     });
     $('.inner-container').append($startButton);
+
     if (localStorage.length) {
         $('.inner-container').append($continueButton);
     }
-   /* timer = setTimeout(function () {
-        $startButton.click();
-    }, 1000);*/
-    //function openGame()
+    /* timer = setTimeout(function () {
+     $startButton.click();
+     }, 1000);*/
 }
