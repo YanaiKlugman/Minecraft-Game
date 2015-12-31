@@ -59,6 +59,14 @@ function clickTile(x, y) {
             //var clsToAd = $board[x][y].attr('class');
             //$board[x][y].attr('class',clsToAd + inventory[inventory.length - 1]);
             $board[x][y].addClass(inventory[inventory.length - 1]);
+            if (x > ($board.length-GROUND_HEIGHT)) {
+                var growTreeClone = cloneObject(growTree);
+                growTreeClone.x = x;
+                growTreeClone.y = y;
+                growTreeClone.type = inventory[inventory.length - 1];
+                console.log(inventory[inventory.length - 1]);
+                createEvent(growTreeClone);
+            }
             inventory.pop();
             $inventory.removeClass();
             $inventory.addClass('tools');
@@ -67,6 +75,9 @@ function clickTile(x, y) {
             }
         }
     } else if (tool.name === 'hand') {
+
+        // if using 'hand', see if we are clicking on an interactable object,
+        //   and trigger an event if we are
         classList = $board[x][y].attr('class').split(/\s+/);
         var count = classList.length;
         $.each(classList, function (index, item) {
@@ -75,28 +86,35 @@ function clickTile(x, y) {
                 count--;
             }
         });
-        var stone = false;
-        classList.forEach(function (data, index) {
-            if (data==='stone')
-                stone = true;
-        });
-        if (count==1 && $board[x][y].hasClass('cloud')) {
-            var flipClone = cloneObject(flipEvent);
-            saveMap();
-            createEvent(flipClone);
-        } else if (stone) {
+
+        // clicking on leaves causes items to fall out
+        if ($board[x][y].hasClass('leaves')) {
+            var dropClone = cloneObject(treeDrop);
+            dropClone.x = x;
+            dropClone.y = y;
+            dropClone.type = numBetween(0,1) ? 'stone' : 'earth';
+            createEvent(dropClone);
+        // clicking on stones flicks them
+        } else if ($board[x][y].hasClass('stone')) {
             var jumpClone = cloneObject(jumpEvent);
             jumpClone.x = x;
             jumpClone.y = y;
-            jumpClone.height = numBetween(1,4);
+            jumpClone.height = numBetween(1, 4);
             jumpClone.interval = 65;
-            jumpClone.repeat = (jumpClone.height+1)*2;
+            jumpClone.repeat = (jumpClone.height + 1) * 2;
             jumpClone.type = 'stone';
-            jumpClone.x_vel = numBetween(-2,2);
+            jumpClone.x_vel = numBetween(-2, 2);
             createEvent(jumpClone);
+        // clicking on clouds flips the board
+        } else if (count==1 && $board[x][y].hasClass('cloud')) {
+            var flipClone = cloneObject(flipEvent);
+            createEvent(flipClone);
+        } else if ($board[x][y].hasClass('earth')) {
+            var growTreeClone = cloneObject(growTree);
+            growTreeClone.x = x;
+            growTreeClone.y = y;
+            createEvent(growTreeClone);
         }
-
-
     } else {
         var shouldWork = false;
         var classThatWorks;

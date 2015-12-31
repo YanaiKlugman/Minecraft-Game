@@ -5,6 +5,7 @@ var clouds;
 var trees;
 var rocks;
 var loadOnStart = false;
+var GROUND_HEIGHT;
 
 // save contents of tiles into memory
 function saveMap() {
@@ -22,7 +23,7 @@ function loadMap(invert) {
     if (map) {
         map.forEach(function(data, index) {
             data.forEach(function (data2, index2) {
-                if (!invert) {
+                if (invert>0) {
                     $board[index][index2].attr('class', map[index][index2]);
                 } else {
                     $board[$board.length-1-index][$board[0].length-1-index2].attr('class', map[index][index2]);
@@ -54,6 +55,7 @@ function loadStoredBoard() {
 
 // called on startup
 function newGame(){
+    flipDir = 1;
     if (loadOnStart) {
         loadStoredBoard();
         loadOnStart = false;
@@ -86,7 +88,7 @@ function createMap() {
     var NUM_CLOUDS = 2;
     var NUM_ROCKS = numBetween(2,4);
     var NUM_TREES = numBetween(2,3);
-    var GROUND_HEIGHT = numBetween(3, 7);
+    GROUND_HEIGHT = numBetween(3, 7);
     // fill map with sky
     for (var ctr=0; ctr<$board.length; ctr++) {
         for (var ctr2=0; ctr2<$board[ctr].length; ctr2++) {
