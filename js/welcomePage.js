@@ -4,6 +4,7 @@
 function welcome() {
     $('.bottomButton').hide();
     $('#board').hide();
+    $('#sidebar').hide();
 
 
     var $startButton = $('<div></div>');
@@ -24,6 +25,7 @@ function welcome() {
     /*    var timer;*/
     $startButton.on('click', function () {
         $('#board').show();
+        $('#sidebar').show();
         $('#sidebar').show();
         gameInit();
         $('.container').addClass('main-game-container');
