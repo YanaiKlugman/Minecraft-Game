@@ -44,7 +44,7 @@ function toolClick(i) {
 }
 
 var toolWorksOn = [
-    ['stone', 'leaves', 'wood', 'cloud'],
+    ['stone', 'leaves', 'cloud'],
     ['stone'],
     ['grass', 'earth'],
     ['wood', 'leaves'],

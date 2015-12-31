@@ -56,23 +56,14 @@ function clickTile(x, y) {
             $board[x][y].removeClass();
             $board[x][y].addClass('tile');
             if (hasCloud) $board[x][y].addClass('cloud');
-            //var clsToAd = $board[x][y].attr('class');
-            //$board[x][y].attr('class',clsToAd + inventory[inventory.length - 1]);
             $board[x][y].addClass(getTool().tile);
             if (x > ($board.length-GROUND_HEIGHT)) {
                 var growTreeClone = cloneObject(growTree);
                 growTreeClone.x = x;
                 growTreeClone.y = y;
-                growTreeClone.type = inventory[inventory.length - 1];
-                console.log(inventory[inventory.length - 1]);
+                growTreeClone.type = inventoryItems[getTool().id];
                 createEvent(growTreeClone);
             }
-            /*inventory.pop();
-            $inventory.removeClass();
-            $inventory.addClass('tools');
-            if (inventory.length) {
-                $('#inventory').addClass(inventory[inventory.length - 1]);
-            }*/
             inventoryAmounts[getTool().id]--;
         }
 
@@ -95,7 +86,7 @@ function clickTile(x, y) {
             var dropClone = cloneObject(treeDrop);
             dropClone.x = x;
             dropClone.y = y;
-            dropClone.type = numBetween(0,1) ? 'stone' : 'earth';
+            dropClone.type = 'stone';//numBetween(0,1) ? 'stone' : 'earth';
             createEvent(dropClone);
         // clicking on stones flicks them
         } else if ($board[x][y].hasClass('stone')) {
@@ -112,12 +103,12 @@ function clickTile(x, y) {
         } else if (count==1 && $board[x][y].hasClass('cloud')) {
             var flipClone = cloneObject(flipEvent);
             createEvent(flipClone);
-        } else if ($board[x][y].hasClass('earth')) {
+        }/* else if ($board[x][y].hasClass('earth')) {
             var growTreeClone = cloneObject(growTree);
             growTreeClone.x = x;
             growTreeClone.y = y;
             createEvent(growTreeClone);
-        }
+        }*/
         // for all normal tools:
     } else {
         var shouldWork = false;
