@@ -18,11 +18,15 @@ function saveMap() {
 }
 
 // load from map saved in memory
-function loadMap() {
+function loadMap(invert) {
     if (map) {
         map.forEach(function(data, index) {
             data.forEach(function (data2, index2) {
-                $board[index][index2].attr('class', map[index][index2]);
+                if (!invert) {
+                    $board[index][index2].attr('class', map[index][index2]);
+                } else {
+                    $board[$board.length-1-index][$board[0].length-1-index2].attr('class', map[index][index2]);
+                }
             });
         });
     }
@@ -36,6 +40,7 @@ function storeBoard() {
             localStorage.setItem((ctr*$board[0].length+ctr2).toString(), $board[ctr][ctr2].attr('class'));
         }
     }
+    saveMap();
 }
 
 // load board from localstorage
@@ -46,7 +51,8 @@ function loadStoredBoard() {
         });
     });
 }
-//load new game
+
+// called on startup
 function newGame(){
     if (loadOnStart) {
         loadStoredBoard();
@@ -54,8 +60,10 @@ function newGame(){
     } else {
         createMap();
     }
+    saveMap();
 }
 
+// alter classes of a tile to change it's appearance to a new type
 function changeTile(x, y, type) {
     var holder = '';
     if (type != 0 && type != 1) {
@@ -68,10 +76,12 @@ function changeTile(x, y, type) {
     $board[y][x].addClass(tileClasses[type]);
 }
 
+// returns random integer between a and b (inclusive)
 function numBetween(a, b) {
     return Math.floor(Math.random() * (b-a+1)) + a;
 }
 
+// randomly generates elements and calls changeTile() for each tile of every element to draw the board
 function createMap() {
     var NUM_CLOUDS = 2;
     var NUM_ROCKS = numBetween(2,4);
@@ -149,7 +159,27 @@ function createMap() {
 }
 
 function drawMap() {
+    // fill map with sky
+    for (var ctr=0; ctr<$board.length; ctr++) {
+        for (var ctr2=0; ctr2<$board[ctr].length; ctr2++) {
+            changeTile(ctr2, ctr, 0);
+        }
+    }
 
+    // draw clouds
+    clouds.forEach(function(data) {
+        drawCloud(data.x, data.y, data.h, data.w);
+    })
+
+    // draw trees
+    trees.forEach(function(data) {
+        drawTree(data.x, data.y, data.lh, data.th);
+    })
+
+    // draw rocks
+    rocks.forEach(function(data) {
+        drawRock(data.x, data.y, data.h);
+    })
 }
 
 function drawRock(x, groundHeight, pileHeight) {
@@ -158,6 +188,8 @@ function drawRock(x, groundHeight, pileHeight) {
     }
 }
 
+
+// draw a cloud, params: x coord, y coord, height, width
 function drawCloud(cloudx,cloudy,height,width) {
     for (var ctr=cloudy; ctr<cloudy+height+1; ctr++) {
         for (var ctr2=((ctr==cloudy||ctr==cloudy+height)?cloudx+width-1:cloudx); ctr2<((ctr==cloudy||ctr==cloudy+height)?cloudx+width*2+1:cloudx+width*3); ctr2++) {
@@ -168,6 +200,7 @@ function drawCloud(cloudx,cloudy,height,width) {
     }
 }
 
+// draw a tree, params: x coord, y coord, height of top part of tree (leaves/branches), height of trunk
 function drawTree(x,y,leavesHeight,trunkHeight) {
     y = $board.length - y - 1;
     for (var ctr=y-trunkHeight; ctr>y-trunkHeight-leavesHeight; ctr--) {
@@ -180,6 +213,7 @@ function drawTree(x,y,leavesHeight,trunkHeight) {
     }
 }
 
+// draws ground from bottom to height
 function drawGround(height) {
     var top = $board.length - height;
     for (var y=top; y<$board.length; y++) {
