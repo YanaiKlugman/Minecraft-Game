@@ -26,7 +26,6 @@ function welcome() {
     $startButton.on('click', function () {
         $('#board').show();
         $('#sidebar').show();
-        $('#sidebar').show();
         gameInit();
         $('.container').addClass('main-game-container');
         /*css({'background-image': url('../images/back'), 'padding':'0px'});*/

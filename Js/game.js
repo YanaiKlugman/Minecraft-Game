@@ -15,4 +15,5 @@ function gameInit() {
     createSaveButton();
     createNewGameButton();
     initEvents();
+    //$(window).resize(function() {});
 }
