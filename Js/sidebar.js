@@ -74,7 +74,7 @@ function createSideBar(){
         tool.name = 'inventory';
         tool.tile = inventoryItems[i];
         tool.worksOn = toolWorksOn[4];
-        tool.id = i+4;
+        tool.id = i;
         tools.push(tool);
     }
     //$('#hand').text('hand');*/

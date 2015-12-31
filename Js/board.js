@@ -48,7 +48,7 @@ function clickTile(x, y) {
     var $inventory = $('#inventory');
     var tool = getTool();
     if (tool.name == 'inventory') {
-        if (inventory.length) {
+        if (inventoryAmounts[getTool().id]) {
             var hasCloud = false;
             if ($board[x][y].hasClass('cloud')) {
                 hasCloud = true;
@@ -58,7 +58,7 @@ function clickTile(x, y) {
             if (hasCloud) $board[x][y].addClass('cloud');
             //var clsToAd = $board[x][y].attr('class');
             //$board[x][y].attr('class',clsToAd + inventory[inventory.length - 1]);
-            $board[x][y].addClass(inventory[inventory.length - 1]);
+            $board[x][y].addClass(getTool().tile);
             if (x > ($board.length-GROUND_HEIGHT)) {
                 var growTreeClone = cloneObject(growTree);
                 growTreeClone.x = x;
@@ -67,13 +67,16 @@ function clickTile(x, y) {
                 console.log(inventory[inventory.length - 1]);
                 createEvent(growTreeClone);
             }
-            inventory.pop();
+            /*inventory.pop();
             $inventory.removeClass();
             $inventory.addClass('tools');
             if (inventory.length) {
                 $('#inventory').addClass(inventory[inventory.length - 1]);
-            }
+            }*/
+            inventoryAmounts[getTool().id]--;
         }
+
+        // hand for interacting with stuff
     } else if (tool.name === 'hand') {
 
         // if using 'hand', see if we are clicking on an interactable object,
@@ -115,6 +118,7 @@ function clickTile(x, y) {
             growTreeClone.y = y;
             createEvent(growTreeClone);
         }
+        // for all normal tools:
     } else {
         var shouldWork = false;
         var classThatWorks;
@@ -128,10 +132,11 @@ function clickTile(x, y) {
             $board[x][y].removeClass(classThatWorks);
             $board[x][y].removeClass('interact');
             $board[x][y].addClass('sky');
-            inventory.push(classThatWorks);
+            inventoryAmounts[inventoryItems.indexOf(classThatWorks)]++;
+            /*inventory.push(classThatWorks);
             $inventory.removeClass();
             $inventory.addClass('tools');
-            $inventory.addClass(classThatWorks);
+            $inventory.addClass(classThatWorks);*/
         }
     }
 }
